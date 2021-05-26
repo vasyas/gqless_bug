@@ -1,9 +1,7 @@
 import Fastify from "fastify";
 import mercurius from "mercurius";
-import { codegenMercurius, gql } from "mercurius-codegen";
-import { inspectWriteGenerate } from "@gqless/cli";
-import waitOn from "wait-on";
-import { User } from "./generated";
+import {codegenMercurius, gql} from "mercurius-codegen";
+import {inspectWriteGenerate} from "@gqless/cli";
 
 async function main() {
   const app = Fastify({
@@ -11,7 +9,7 @@ async function main() {
     pluginTimeout: 1000 * 60
   });
 
-  const users: User[] = [
+  const data = [
     {
       id: "1",
       name: "John"
@@ -29,9 +27,14 @@ async function main() {
           usersList: [User!]!
       }  
       type Subscription {
-          usersList: [User!]!
+          users: [User!]!
+          groups: [User!]!
       }
       type User {
+        id: ID!
+        name: String!
+      }
+      type Group {
         id: ID!
         name: String!
       }
@@ -39,18 +42,32 @@ async function main() {
     resolvers: {
       Query: {},
       Subscription: {
-        usersList: {
+        users: {
           subscribe(_root, _args, ctx) {
             setTimeout(() => {
               ctx.pubsub.publish({
-                topic: "usersList",
+                topic: "users",
                 payload: {
-                  usersList: users
+                  users: data
                 }
               });
-            }, 0)
+            }, 10)
 
-            return ctx.pubsub.subscribe("usersList");
+            return ctx.pubsub.subscribe("users");
+          }
+        },
+        groups: {
+          subscribe(_root, _args, ctx) {
+            setTimeout(() => {
+              ctx.pubsub.publish({
+                topic: "groups",
+                payload: {
+                  groups: data
+                }
+              });
+            }, 10)
+
+            return ctx.pubsub.subscribe("groups");
           }
         }
       },

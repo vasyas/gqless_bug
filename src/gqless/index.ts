@@ -45,7 +45,8 @@ const subscriptionsClient =
           const url = new URL("http://localhost:3000/api/graphql", window.location.href);
           url.protocol = url.protocol.replace("http", "ws");
           return url.href;
-        }
+        },
+        lazy: false
       })
     : undefined;
 

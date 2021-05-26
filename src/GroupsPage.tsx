@@ -1,8 +1,8 @@
 import * as React from "react"
 import {useSubscription} from "./gqless"
 
-export function UsersPage() {
+export function GroupsPage() {
   const subscription = useSubscription()
 
-  return <div>Users: {subscription.users[0].name}</div>
+  return <div>Groups: {subscription.groups[0].name}</div>
 }
