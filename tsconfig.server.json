@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "lib": [
+      "ES2020"
+    ],
+    "module": "commonjs",
+    "outDir": "dist",
+    "noEmit": false,
+    "sourceMap": false,
+    "incremental": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    ".next",
+    "src"
+  ],
+  "include": [
+    "api",
+  ]
+}

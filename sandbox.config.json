@@ -1,0 +1,10 @@
+{
+  "node": "14",
+  "container": {
+    "node": "14",
+    "port": 3000
+  },
+  "infiniteLoopProtection": false,
+  "template": "node",
+  "hardReloadOnChange": true
+}
