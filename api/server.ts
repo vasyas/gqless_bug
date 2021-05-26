@@ -48,7 +48,7 @@ async function main() {
                   usersList: users
                 }
               });
-            }, 10)
+            }, 0)
 
             return ctx.pubsub.subscribe("usersList");
           }
