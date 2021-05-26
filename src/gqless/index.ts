@@ -42,7 +42,7 @@ const subscriptionsClient =
     ? createSubscriptionsClient({
         wsEndpoint: () => {
           // Modify if needed
-          const url = new URL("/api/graphql", window.location.href);
+          const url = new URL("http://localhost:3000/api/graphql", window.location.href);
           url.protocol = url.protocol.replace("http", "ws");
           return url.href;
         }

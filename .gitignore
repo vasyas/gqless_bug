@@ -2,3 +2,4 @@ node_modules
 /dist
 /api/generated.ts
 /src/gqless/schema.generated.ts
+.cache

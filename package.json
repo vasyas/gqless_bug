@@ -26,8 +26,11 @@
   },
   "scripts": {
     "api": "ts-node ./api/server.ts",
-    "web": "parcel index.html --no-autoinstall"
+    "web": "parcel index.html --no-autoinstall src/index.html"
   },
   "keywords": [],
-  "description": ""
+  "description": "",
+  "browserslist": [
+    "last 1 Chrome version"
+  ]
 }
